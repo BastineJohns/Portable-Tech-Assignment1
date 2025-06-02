@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Install the required MySQL package
 
 sudo apt-get update -y
@@ -39,3 +40,6 @@ export APP_COLOR=blue
 ```
 ### Run the application, make sure it is visible in the browser
 ```docker run -p 8080:8080  -e DBHOST=$DBHOST -e DBPORT=$DBPORT -e  DBUSER=$DBUSER -e DBPWD=$DBPWD  my_app```
+=======
+# Portable-Tech-Assignment1
+>>>>>>> b64ecf0280f474e9a13967c51dc4abe24f83429a
