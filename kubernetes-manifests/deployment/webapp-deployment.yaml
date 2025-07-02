@@ -1,11 +1,9 @@
 apiVersion: apps/v1
-kind: ReplicaSet
+kind: Deployment
 metadata:
-  name: webapp-rs
-  labels:
-    app: webapp
+  name: webapp-deployment
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
       app: webapp
@@ -21,7 +19,7 @@ spec:
         - containerPort: 8080
         env:
         - name: DBHOST
-          value: "10.244.0.10"  # Use the actual IP
+          value: "10.244.0.10" 
         - name: DBUSER
           value: "sql_user"
         - name: DBPWD
