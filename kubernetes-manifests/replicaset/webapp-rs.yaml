@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: webapp-rs
+  labels:
+    app: employees
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: employees
+  template:
+    metadata:
+      labels:
+        app: employees
+    spec:
+      containers:
+      - name: employees
+        image: 533267328640.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
+        ports:
+        - containerPort: 8080
+        env:
+        - name: DBHOST
+          value: "10.244.0.10"  # Use the actual IP
+        - name: DBUSER
+          value: "sql_user"
+        - name: DBPWD
+          value: "yoyoyo"
+        - name: DATABASE
+          value: "employees"
+        - name: DBPORT
+          value: "3306"
+      imagePullSecrets:
+      - name: regcred
+

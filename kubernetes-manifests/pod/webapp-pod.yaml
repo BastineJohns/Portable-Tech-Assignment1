@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: webapp-pod
+  labels:
+    app: employees
+spec:
+  containers:
+  - name: webapp-container
+    image: 533267328640.dkr.ecr.us-east-1.amazonaws.com/webapp:latest
+    ports:
+    - containerPort: 8080
+    env:
+    - name: DBHOST
+      value: "localhost"  # Will be changed to 'mysql-service' when a service is added
+    - name: DBUSER
+      value: "sql_user"
+    - name: DBPWD
+      value: "yoyoyo"
+    - name: DATABASE
+      value: "employees"
+    - name: DBPORT
+      value: "3306"
+  imagePullSecrets:
+  - name: regcred
